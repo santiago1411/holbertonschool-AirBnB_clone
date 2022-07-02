@@ -9,7 +9,7 @@ class Filestorage:
     to serialize and deserialize files into and
     """
 
-    __file_path = ".__name__ + .json"
+    __file_path = "file.json"
     __objects = {}
 
     def __init__(self):
@@ -18,13 +18,22 @@ class Filestorage:
     def all(self):
         return self.__objects
     
-    def new(self, obj)
+    def new(self, obj):
+        """
+        Method that sets the obj in __objects
+        with key <obj class name>.id
+        """
+        self.__objects[f"{obj.__class__.__name__}.{obj.id}"] = obj
 
-    def save(self)
-        with open(self.__file_path, "w") as write:
-            json.dumb(self.__objects, write)
+    def save(self):
+        """Method that serializes __objects to the JSON file"""
+
+        with open(self.__file_path, "w", encoding = 'utf-8') as file:
+            serial = json.dumps(self.__objects, sort_keys=True, default=str)
+            file.write(serial)
+
 
     def reload(self):
-        if path.exists(self.__name__ + ".json"):
-            data = json.loads(self.__name__ + ".json")
-        return(data)
+        if path.exists(self.__file_path):
+            with open(self.__file_path, "r") as r:
+                self.__objects = json.loads(r.read())
