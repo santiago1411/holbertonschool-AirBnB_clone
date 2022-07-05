@@ -23,7 +23,8 @@ class Filestorage:
         Method that sets the obj in __objects
         with key <obj class name>.id
         """
-        self.__objects[f"{obj.__class__.__name__}.{obj.id}"] = obj
+        obj2 = f"{obj.__class__.__name__}.{obj.id}"
+        self.__objects[obj2] = obj
 
     def save(self):
         """Method that serializes __objects to the JSON file"""
