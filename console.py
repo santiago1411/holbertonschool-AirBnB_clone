@@ -6,7 +6,7 @@ import cmd
 import models
 from models.base_model import BaseModel
 from models import storage
-from model.user import User
+from models.user import User
 from models.city import City
 from models.state import State
 from models.review import Review
@@ -119,10 +119,10 @@ class HBNBCommand(cmd.Cmd):
             return
 
         try:
-            model = eval(arg[0])
-        except
-        print("** class doesn't exist **")
-        return
+            (model = eval(arg[0]))
+        except:
+            print("** class doesn't exist **")
+            return
 
         if len(arg) < 2:
             print("** instance id missing **")
@@ -178,5 +178,5 @@ class HBNBCommand(cmd.Cmd):
         """
         pass
 
-        if __name__ == '__main__':
-            HBNBCommand().cmdloop()
+if __name__ == '__main__':
+    HBNBCommand().cmdloop()

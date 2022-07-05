@@ -1,11 +1,12 @@
 #!/usr/bin/python3
 """Class State"""
+from models.base_model import BaseModel
 
 
 class Place(BaseModel):
     """Class string empty"""
-    city.id = ""
-    user.id = ""
+    city_id = ""
+    user_id = ""
     name = ""
     description = ""
     number_rooms = 0
