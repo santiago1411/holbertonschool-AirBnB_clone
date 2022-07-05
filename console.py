@@ -3,6 +3,7 @@
 """module"""
 
 import cmd
+from logging import exception
 import models
 from models.base_model import BaseModel
 from models import storage
@@ -119,8 +120,8 @@ class HBNBCommand(cmd.Cmd):
             return
 
         try:
-            (model = eval(arg[0]))
-        except:
+            model = eval(arg[0])
+        except Exception as e:
             print("** class doesn't exist **")
             return
 
@@ -177,6 +178,7 @@ class HBNBCommand(cmd.Cmd):
         Empty line
         """
         pass
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
