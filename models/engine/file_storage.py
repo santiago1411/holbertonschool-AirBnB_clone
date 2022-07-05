@@ -11,7 +11,7 @@ from models.amenity import Amenity
 from models.place import Place
 
 
-class Filestorage:
+class FileStorage:
     """Class Filestorage
     to serialize and deserialize files into and
     """
