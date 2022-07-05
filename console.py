@@ -15,6 +15,7 @@ from models.place import Place
 
 name_of_class = ["BaseModel"]
 
+
 class HBNBCommand(cmd.Cmd):
     """class"""
 
@@ -27,17 +28,18 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print("** class name missing **")
             return
-        
+
         elif arg not in name_of_class:
             print("** class doesn't exist **")
             return
-        
+
         inst = eval(arg)()
         inst.save()
         print(inst.id)
-    
+
     def do_show(self, arg):
-        """ Prints the string representation of an instance based on the class name and id
+        """ Prints the string representation"""
+        """of an instance based on the class name and id
         """
         arg = arg.split()
 
@@ -56,10 +58,10 @@ class HBNBCommand(cmd.Cmd):
         dict = storage.all()
         for key, value in dict.items():
             if f"{arg[0]}.{arg[1]}" == key:
-                print (dict[key])
+                print(dict[key])
                 return
 
-        print ("** no instance found **")
+        print("** no instance found **")
 
     def do_destroy(self, arg):
         """Deletes an instance based on the class name and id
@@ -84,9 +86,7 @@ class HBNBCommand(cmd.Cmd):
                 del (dict[key])
                 storage.save()
                 return
-
-
-        print ("** no instance found **")
+        print("** no instance found **")
 
     def do_all(self, arg):
         """Prints all string representation of all instances
@@ -110,7 +110,7 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** class doesn't exist **")
                 return
-    
+
     def do_update(self, arg):
         arg = arg.split()
 
@@ -120,9 +120,9 @@ class HBNBCommand(cmd.Cmd):
 
         try:
             model = eval(arg[0])
-        except:
-            print("** class doesn't exist **")
-            return
+        except
+        print("** class doesn't exist **")
+        return
 
         if len(arg) < 2:
             print("** instance id missing **")
@@ -165,7 +165,7 @@ class HBNBCommand(cmd.Cmd):
         Command to exit the program
         """
         return True
-    
+
     def do_EOF(self, arg):
         """
         Command to exit the program
@@ -178,5 +178,5 @@ class HBNBCommand(cmd.Cmd):
         """
         pass
 
-if __name__ == '__main__':
-    HBNBCommand().cmdloop()
+        if __name__ == '__main__':
+            HBNBCommand().cmdloop()

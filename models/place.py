@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Class State"""
 
+
 class Place(BaseModel):
     """Class string empty"""
     city.id = ""

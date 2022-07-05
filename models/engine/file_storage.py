@@ -10,6 +10,7 @@ from models.review import Review
 from models.amenity import Amenity
 from models.place import Place
 
+
 class Filestorage:
     """Class Filestorage
     to serialize and deserialize files into and
@@ -23,7 +24,7 @@ class Filestorage:
 
     def all(self):
         return self.__objects
-    
+
     def new(self, obj):
         """
         Method that sets the obj in __objects
@@ -35,12 +36,13 @@ class Filestorage:
     def save(self):
         """Method that serializes __objects to the JSON file"""
 
-        with open(self.__file_path, "w", encoding = 'utf-8') as file:
+        with open(self.__file_path, "w", encoding='utf-8') as file:
             serial = json.dumps(self.__objects, sort_keys=True, default=str)
             file.write(serial)
 
-
     def reload(self):
+        """Method that"""
+
         if exists(self.__file_path):
             with open(self.__file_path, "r") as r:
                 self.__objects = json.loads(r.read())
