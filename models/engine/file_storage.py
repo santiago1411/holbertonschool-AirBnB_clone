@@ -2,7 +2,13 @@
 
 """Module for Filestorage"""
 import json
-from os import path
+from os.path import exists
+from models.user import User
+from models.city import City
+from models.state import State
+from models.review import Review
+from models.amenity import Amenity
+from models.place import Place
 
 class Filestorage:
     """Class Filestorage
@@ -35,6 +41,6 @@ class Filestorage:
 
 
     def reload(self):
-        if path.exists(self.__file_path):
+        if exists(self.__file_path):
             with open(self.__file_path, "r") as r:
                 self.__objects = json.loads(r.read())

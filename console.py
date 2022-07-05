@@ -6,6 +6,12 @@ import cmd
 import models
 from models.base_model import BaseModel
 from models import storage
+from model.user import User
+from models.city import City
+from models.state import State
+from models.review import Review
+from models.amenity import Amenity
+from models.place import Place
 
 name_of_class = ["BaseModel"]
 
