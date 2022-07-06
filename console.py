@@ -15,6 +15,7 @@ from models.place import Place
 
 name_of_class = ["BaseModel", "User", "State", "Review", "Place", "City", "Amenity"]
 
+
 class HBNBCommand(cmd.Cmd):
     """class"""
 
@@ -40,11 +41,12 @@ class HBNBCommand(cmd.Cmd):
         """ Prints the string representation"""
         """of an instance based on the class name and id
         """
-        arg = arg.split()
 
-        if len(arg) == "":
+        if arg == "":
             print("** class name missing **")
             return
+
+        arg = arg.split()
 
         if arg[0] not in name_of_class:
             print("** class doesn't exist **")
@@ -65,11 +67,12 @@ class HBNBCommand(cmd.Cmd):
     def do_destroy(self, arg):
         """Deletes an instance based on the class name and id
         """
-        arg = arg.split()
 
-        if len(arg) == "":
+        if arg == "":
             print("** class name missing **")
             return
+
+        arg = arg.split()
 
         if arg[0] not in name_of_class:
             print("** class doesn't exist **")
@@ -173,6 +176,7 @@ class HBNBCommand(cmd.Cmd):
         Empty line
         """
         pass
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
