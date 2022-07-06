@@ -15,7 +15,6 @@ from models.place import Place
 
 name_of_class = ["BaseModel", "User", "State", "Review", "Place", "City", "Amenity"]
 
-
 class HBNBCommand(cmd.Cmd):
     """class"""
 
@@ -68,7 +67,7 @@ class HBNBCommand(cmd.Cmd):
         """
         arg = arg.split()
 
-        if len(arg) < 1:
+        if len(arg) == "":
             print("** class name missing **")
             return
 
@@ -76,7 +75,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
 
-        elif len(arg) < 2:
+        elif len(arg) == 1:
             print("** instance id missing **")
             return
 
