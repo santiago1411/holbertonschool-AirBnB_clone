@@ -43,7 +43,7 @@ class HBNBCommand(cmd.Cmd):
         """
         arg = arg.split()
 
-        if len(arg) <= 1:
+        if len(arg) < 1:
             print("** class name missing **")
             return
 
@@ -178,4 +178,5 @@ class HBNBCommand(cmd.Cmd):
         """
         pass
 
-
+if __name__ == '__main__':
+    HBNBCommand().cmdloop()
