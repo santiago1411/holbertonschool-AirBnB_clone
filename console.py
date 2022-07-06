@@ -3,7 +3,6 @@
 """module"""
 
 import cmd
-from logging import exception
 import models
 from models.base_model import BaseModel
 from models import storage
@@ -180,5 +179,3 @@ class HBNBCommand(cmd.Cmd):
         pass
 
 
-if __name__ == '__main__':
-    HBNBCommand().cmdloop()
