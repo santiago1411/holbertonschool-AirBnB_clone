@@ -15,25 +15,23 @@ from models.place import Place
 from models.review import Review
 
 
-class FileStorage:
-    """Class FileStorage
-    To serialize and deserialize files into and from Json
+class FileStorage():
     """
-
+    Initializing all attributes and methods:
+    __file_path : str - path to JSON file
+    __objects : dict - empty but will store all objects by <class>.id
+    """
     __file_path = "file.json"
     __objects = {}
 
-    def __init__(self):
-        """Class constructor"""
-
     def all(self):
-        """ return dictionary"""
+        """Returns the dictionary __objects"""
         return self.__objects
 
     def new(self, obj):
-        """sets in __objects the obj"""
-        KEY_obj = f"{type(obj).__name__}.{obj.id}"
-        self.__objects[KEY_obj] = obj
+        """Sets in __objects the obj with key <obj class name>.id"""
+        if obj is not None:
+            self.__objects["{}.{}".format(type(obj).__name__, obj.id)] = obj
 
     def save(self):
         """Serializes __objects to JSON file (path:__file_path)"""

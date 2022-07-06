@@ -34,7 +34,6 @@ fs.reload()
 print(fs.reload())
 
 all_reloaded = fs.all()
-print(f"{all_reloaded}Hey")
 
 if len(all_reloaded.keys()) != len(ids):
     print("Missing after reload")
