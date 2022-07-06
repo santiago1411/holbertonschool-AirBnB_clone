@@ -19,10 +19,8 @@ class FileStorage:
     __file_path = "file.json"
     __objects = {}
 
-    def __init__(self):
-        """Class constructor"""
-
     def all(self):
+        """Return objects"""
         return self.__objects
 
     def new(self, obj):
@@ -30,8 +28,9 @@ class FileStorage:
         Method that sets the obj in __objects
         with key <obj class name>.id
         """
-        obj2 = f"{obj.__class__.__name__}.{obj.id}"
-        self.__objects[obj2] = obj
+        if obj is not None:
+            obj2 = f"{obj.__class__.__name__}.{obj.id}"
+            self.__objects[obj2] = obj
 
     def save(self):
         """Method that serializes __objects to the JSON file"""
@@ -41,8 +40,11 @@ class FileStorage:
             file.write(serial)
 
     def reload(self):
-        """Method that"""
+        """Method that diserializes json file to objects"""
 
-        if exists(self.__file_path):
+        try:
             with open(self.__file_path, "r") as r:
-                self.__objects = json.loads(r.read())
+                for key, value in (json.load(r)).items():
+                    self.__objects[key] = eval(value["__class__"])(**value)
+        except Exception as e:
+            pass

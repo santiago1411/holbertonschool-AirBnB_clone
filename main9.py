@@ -1,43 +1,59 @@
 #!/usr/bin/python3
 import os
+from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 
-bm_init = BaseModel()
-bm_init.save()
+fs = FileStorage()
+file_path = "file.json"
+try:
+    file_path = FileStorage._FileStorage__file_path
+except:
+    pass
+try:
+    os.remove(file_path)
+except:
+    pass
+try:
+    fs._FileStorage__objects.clear()
+except:
+    pass
+ids = []
+objs_by_id = {}
+for i in range(10):
+    bm = BaseModel()
+    fs.new(bm)
+    bm.save()
+    ids.append(bm.id)
+    objs_by_id[bm.id] = bm
 
 try:
-    bm = BaseModel(**bm_init.to_dict())
+    fs._FileStorage__objects.clear()
 except:
-    bm = None
+    pass
+fs.reload()
+print(fs.reload())
 
-if bm is None or bm.id != bm_init.id:
-    try:
-        bm = BaseModel(bm_init.to_dict())
-    except:
-        bm = None
+all_reloaded = fs.all()
+print(f"{all_reloaded}Hey")
 
-print(bm.id == bm_init.id)
-print(type(bm.created_at))
+if len(all_reloaded.keys()) != len(ids):
+    print("Missing after reload")
+
+for id in ids:
+    if all_reloaded.get(id) is None and all_reloaded.get("{}.{}".format("BaseModel", id)) is None:
+        print("Missing {}".format(id))
+
+for id in ids:
+    obj_reloaded = all_reloaded.get(id)
+    if obj_reloaded is None:
+        obj_reloaded = all_reloaded.get("{}.{}".format("BaseModel", id))
+    print(obj_reloaded.__class__.__name__)
+    obj_created = objs_by_id[id]
+    print(obj_reloaded.id == obj_created.id)
+    print(obj_reloaded.created_at == obj_created.created_at)
+    print(obj_reloaded.updated_at == obj_created.updated_at)
+
 try:
-    print(type(bm.updated_at))
-except:
-    print("<class 'datetime.datetime'>")
-
-print(bm.created_at.year == bm_init.created_at.year)
-print(bm.created_at.month == bm_init.created_at.month)
-print(bm.created_at.day == bm_init.created_at.day)
-print(bm.created_at.hour == bm_init.created_at.hour)
-print(bm.created_at.minute == bm_init.created_at.minute)
-
-try:
-    print(bm.updated_at.year == bm_init.updated_at.year)
-    print(bm.updated_at.month == bm_init.updated_at.month)
-    print(bm.updated_at.day == bm_init.updated_at.day)
-    print(bm.updated_at.hour == bm_init.updated_at.hour)
-    print(bm.updated_at.minute == bm_init.updated_at.minute)
-except:
-    print("True")
-    print("True")
-    print("True")
-    print("True")
-    print("True")
+    os.remove(file_path)
+except Exception as e:
+    pass
