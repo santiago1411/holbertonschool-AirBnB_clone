@@ -5,7 +5,7 @@ Instantiating BaseModel.
 import unittest
 from models.base_model import BaseModel
 import pycodestyle
-
+import datetime
 
 class TestBaseModel(unittest.TestCase):
     """
@@ -71,6 +71,12 @@ class TestBaseModel(unittest.TestCase):
         result = pstyle.check_files(['models/base_model.py'])
         self.assertEqual(result.total_errors, 0,
                          "Found code style errors.")
+
+    def test_user_updated(self):
+        """test to check user updated_at"""
+        User_1 = BaseModel()
+        self.assertEqual(type(User_1.updated_at), type(datetime.now()))
+        self.assertTrue(hasattr(User_1, "updated_at"))
 
     @classmethod
     def tearDownClass(cls):
