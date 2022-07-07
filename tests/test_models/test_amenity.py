@@ -2,8 +2,6 @@
 from models.amenity import Amenity
 from models.base_model import BaseModel
 from datetime import datetime
-from models.city import City
-from models import city
 import unittest
 
 
