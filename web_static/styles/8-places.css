@@ -1,0 +1,58 @@
+.places {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.places h1 {
+    width: 100%;
+    text-align: left;
+    font-size: 30px;
+}
+.places article {
+    width:  390px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #FF5A5F;
+    border-radius: 4px;
+}
+.places h2 {
+    font-size: 30px;
+    text-align: center;
+    margin: 10px;
+    margin-bottom: 10%;
+}
+
+
+.places article .information {
+    border-top: 1px solid #DDDDDD;
+    border-bottom: 1px solid #DDDDDD;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+}
+
+.places article .information .Myhomeimagen{
+    background: url('https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/icon_group.png') no-repeat top center;
+    height: 50px;
+    width: 120px;
+}
+.places article .information .imagen1{
+    background: url('https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/icon_bed.png') no-repeat top center;
+    height: 50px;
+    width: 120px;
+}
+.places article .information .imagen2{
+    background: url('https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/icon_bath.png') no-repeat top center;
+    height: 50px;
+    width: 120px;
+}
+
+.places article .information p{
+    margin-top: -2px;
+    margin-bottom: 10px;
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
